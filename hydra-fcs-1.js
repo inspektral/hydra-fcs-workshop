@@ -1,15 +1,15 @@
 
 
-loadScript("https://cdn.statically.io/gh/ymaltsman/Hydra-FCS/3449358/HydraFCS.js");
+//loadScript("https://cdn.statically.io/gh/ymaltsman/Hydra-FCS/3449358/HydraFCS.js");
 
 
-iFermatSpiral().out();
+iFermatSpiral().out(o1);
 
 
 iCircle(3).out(o2);
 
 
-iDevil(3).pixelate(100,100).out(o1);
+iDevil(3).pixelate(100,100).out();
 
 
 
@@ -38,10 +38,13 @@ osc().eCircle().out();
 
 s0.initCam();
 
-
-osc(2,0.2,1).mult(iCardioid(0.2).modulateScrollY(o0).eStrophoid(0.2)).out(o0);
-
 s2.initImage("https://upload.wikimedia.org/wikipedia/commons/9/93/Two_people_riding_in_an_electriquette_%281915%29.jpg")
-src(s2).eStrophoid(2).out();
+src(s2).modulate(osc(10)).eCircle(1).out();
+
+
+a.setSmooth(0.5);
+
+osc(2,0.2,1).mult(iCardioid(0.2).scale(()=>a.fft[0]).modulateScrollY(o0).eStrophoid(0.2)).out(o0);
+
 
 
